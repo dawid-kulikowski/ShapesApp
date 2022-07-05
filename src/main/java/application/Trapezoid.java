@@ -1,21 +1,22 @@
 package application;
 
-public class Triangle implements Measurable{
+public class Trapezoid implements Measurable{
     private double a;
     private double b;
     private double c;
+    private double d;
     private double h;
 
-    public Triangle() {
-    }
-
-    public Triangle(double a, double b, double c, double h) {
+    public Trapezoid(double a, double b, double c, double d, double h) {
         this.a = a;
         this.b = b;
+        this.d = d;
         this.c = c;
         this.h = h;
     }
 
+    public Trapezoid() {
+    }
 
     public void setA(double a) {
         this.a = a;
@@ -29,19 +30,21 @@ public class Triangle implements Measurable{
         this.c = c;
     }
 
+    public void setD(double d) {
+        this.d = d;
+    }
+
     public void setH(double h) {
         this.h = h;
     }
 
     @Override
     public double area() {
-        return ((a*h)*(0.5));
+        return ((a+b)*h)*(0.5);
     }
 
     @Override
     public double perimeter() {
-        return a+b+c;
+        return a+b+c+d;
     }
-
 }
-

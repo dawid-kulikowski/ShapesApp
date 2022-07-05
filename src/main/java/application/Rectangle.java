@@ -9,6 +9,17 @@ public class Rectangle implements Measurable{
         this.b = b;
     }
 
+    public Rectangle() {
+    }
+
+    public void setA(double a) {
+        this.a = a;
+    }
+
+    public void setB(double b) {
+        this.b = b;
+    }
+
     @Override
     public double area() {
         return a*b;
