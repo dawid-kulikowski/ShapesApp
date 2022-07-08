@@ -1,9 +1,14 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class AppMenu {
     private static Scanner scanner = new Scanner(System.in);
+    public static ArrayList<Measurable> list = new ArrayList<>();
+    int i = 1;
 
     private AppMenu() {
     }
@@ -13,7 +18,7 @@ public class AppMenu {
         System.out.println("Choose your shape: \n 1. Square \n 2. Circle \n 3. Triangle \n 4. Rectangle \n 5. Trapezoid");
         choose = scanner.nextInt();
 
-        switch(choose) {
+        switch (choose) {
             case 1:
                 System.out.println("SQUARE MEASURE");
                 Square square = new Square();
@@ -43,6 +48,7 @@ public class AppMenu {
                 triangle.setH(scanner.nextInt());
                 System.out.println("Area of this triangle is: " + triangle.area());
                 System.out.println("Perimeter of this triangle is: " + triangle.perimeter());
+                list.add(triangle);
                 break;
             case 4:
                 System.out.println("RECTANGLE MEASURE");
@@ -70,20 +76,27 @@ public class AppMenu {
                 System.out.println("Area of this trapezoid is: " + trapezoid.area());
                 System.out.println("Perimeter of this trapezoid is: " + trapezoid.perimeter());
                 break;
-            default: return;
-            }
+            default:
+                return;
+        }
+
 
         System.out.println("Do you want to measure other shape? \n 1. Yes \n 2. No");
         choose = scanner.nextInt();
         switch (choose) {
             case 1:
-            menu();
+                menu();
                 break;
             case 2:
-                System.out.println("Thank you for using this App.");
+                for (Measurable shape : list) {
+                    System.out.println("Shape area: " + shape.area() + "\nperimeter: " + shape.perimeter());
+                }
+                System.out.println("Thank you for using ShapesApp.");
                 break;
-            default: return;
+            default:
+                return;
         }
 
-        }
     }
+
+}

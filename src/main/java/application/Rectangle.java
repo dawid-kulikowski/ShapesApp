@@ -1,5 +1,7 @@
 package application;
 
+import java.util.InputMismatchException;
+
 public class Rectangle implements Measurable{
     private double a;
     private double b;
@@ -13,10 +15,16 @@ public class Rectangle implements Measurable{
     }
 
     public void setA(double a) {
+        if (a<=0) {
+            throw new InputMismatchException("You can't build a rectangle with 0 or less side length.");
+        }
         this.a = a;
     }
 
     public void setB(double b) {
+        if (b<=0) {
+            throw new InputMismatchException("You can't build a rectangle with 0 or less side length.");
+        }
         this.b = b;
     }
 
