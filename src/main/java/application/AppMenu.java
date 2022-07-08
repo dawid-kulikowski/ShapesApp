@@ -1,15 +1,14 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Scanner;
 
 public class AppMenu {
     private static Scanner scanner = new Scanner(System.in);
-    public static ArrayList<Measurable> list = new ArrayList<>();
-    int i = 1;
-
+    private static final List<Measurable> list = new ArrayList<>();
+    private static int shapeNumber;
     private AppMenu() {
     }
 
@@ -17,7 +16,7 @@ public class AppMenu {
         int choose;
         System.out.println("Choose your shape: \n 1. Square \n 2. Circle \n 3. Triangle \n 4. Rectangle \n 5. Trapezoid");
         choose = scanner.nextInt();
-
+        shapeNumber = 1;
         switch (choose) {
             case 1:
                 System.out.println("SQUARE MEASURE");
@@ -26,6 +25,7 @@ public class AppMenu {
                 square.setA(scanner.nextInt());
                 System.out.println("Area of this square is: " + square.area());
                 System.out.println("Perimeter of this square is: " + square.perimeter());
+                list.add(square);
                 break;
             case 2:
                 System.out.println("CIRCLE MEASURE");
@@ -34,6 +34,7 @@ public class AppMenu {
                 circle.setR(scanner.nextInt());
                 System.out.println("Area of this circle is: " + circle.area());
                 System.out.println("Perimeter of this circle is: " + circle.perimeter());
+                list.add(circle);
                 break;
             case 3:
                 System.out.println("TRIANGLE MEASURE");
@@ -59,7 +60,10 @@ public class AppMenu {
                 rectangle.setB(scanner.nextInt());
                 System.out.println("Area of this rectangle is: " + rectangle.area());
                 System.out.println("Perimeter of this rectangle is: " + rectangle.perimeter());
+                list.add(rectangle);
                 break;
+
+
             case 5:
                 System.out.println("TRAPEZOID MEASURE");
                 Trapezoid trapezoid = new Trapezoid();
@@ -75,6 +79,7 @@ public class AppMenu {
                 trapezoid.setH(scanner.nextInt());
                 System.out.println("Area of this trapezoid is: " + trapezoid.area());
                 System.out.println("Perimeter of this trapezoid is: " + trapezoid.perimeter());
+                list.add(trapezoid);
                 break;
             default:
                 return;
@@ -88,8 +93,11 @@ public class AppMenu {
                 menu();
                 break;
             case 2:
+                System.out.println("LIST OF ALL YOUR MEASUREMENTS");
                 for (Measurable shape : list) {
-                    System.out.println("Shape area: " + shape.area() + "\nperimeter: " + shape.perimeter());
+                    System.out.println("Shape number " + shapeNumber + ": " + shape.getClass().getSimpleName());
+                    System.out.println("Area: " + shape.area() + "\nPerimeter: " + shape.perimeter() + "\n");
+                    shapeNumber++;
                 }
                 System.out.println("Thank you for using ShapesApp.");
                 break;
@@ -97,6 +105,6 @@ public class AppMenu {
                 return;
         }
 
-    }
+     }
 
 }
